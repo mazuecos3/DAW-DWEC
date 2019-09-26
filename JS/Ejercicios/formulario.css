@@ -1,0 +1,49 @@
+body {
+
+    height: 100%;
+    width:  100%;
+}
+
+.derecha{
+    margin-top: 30px;
+    float:left;
+    text-align: right;
+    height: 80%;
+    width: 20%;
+    background-color: grey;
+
+    /*  BORDE */
+   
+    
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+
+  .formulario{
+    
+    margin-top: 30px;
+    margin-left: 320px;
+    float:left;
+    text-align: right; 
+    height: 80%;
+    width:  40%;
+    background-color: grey;
+    /* 
+    BORDE
+    */
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    border-left: 5px solid black;
+    
+  }
+
+  .input input{
+      margin-right: 60px;
+      width: 10%;
+      
+    text-align: center;
+    color: white;
+    background-color: blue;
+
+  }
