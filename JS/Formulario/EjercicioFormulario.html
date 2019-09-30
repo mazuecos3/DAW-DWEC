@@ -1,0 +1,146 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="formulario.css" type="text/css">
+
+    <title>Factura simplificada</title>
+
+</head>
+
+<body>
+    <div class="formulario">
+        <h1>Formulario Total</h1>
+
+        <form id="formulario" method="post">
+
+            <label for="nombre">Nombre</label>
+            <input onblur="Nombre(this)" type="text " name="nombre " id="nombre " value=" " required>
+            <p>
+                <label for="apellidos ">Apellidos</label>
+                <input onblur="Apellidos(this)" type="text " name="apellidos " id="apellidos " value=" " required>
+                <p>
+                    <label for="e-mail ">e-mail</label>
+                    <input onblur="Email(this)" type="text " name="e-mail " id="e-mail " value=" " required>
+                    <p>
+                        <label for="DNI ">DNI</label>
+                        <input onblur="DNI(this.value)" type="text " name="DNI " id="DNI " value=" " required>
+                        <p>
+                            <label for="Password ">Password</label>
+                            <input onblur="Password(this)" type="password " name="Password " id="Password " value=" " required>
+                            <p>
+                                <label for="Repetir Password ">Repetir Password</label>
+                                <input onblur="ComprobarPassword(this)" type="text" name="Repetir " id="Repetir " value=" " required>
+                                <p>
+                                    <label for="IP Equipo ">IP Equipo</label>
+                                    <input onblur="Direccionip(this)" type="text " name="IP_Equipo " id="IP_ Equipo " value=" " required>
+                                    <p>
+
+
+                                        <div class="input ">
+                                            <input onclick="mostrarErrores()" type="submit " value="Enviar ">
+
+                                        </div>
+
+        </form>
+    </div>
+    <div class="derecha "></div>
+
+</body>
+
+<script>
+    var errores = [];
+
+    function Nombre(input) {
+
+        if (/^[a-zA-Z\s]{3,15}$/g.test(input.value)) {
+
+        } else {
+            console.log("El nombre tiene que tener entre 3 y 15 caracteres siendo todo letras tanto Mayúsculas como Minúsculas");
+            errores[0] = " -Error en el nombre \n";
+        }
+
+    }
+
+    function Apellidos(input) {
+
+        if (/^[a-zA-Z\s]{3,30}$/g.test(input.value)) {
+
+        } else {
+            console.log("El nombre tiene que tener entre 3 y 30 caracteres siendo todo letras tanto Mayúsculas como Minúsculas");
+            errores[1] = " -Error en el apellido \n";
+        }
+
+    }
+
+
+    function Email(input) {
+
+        if (/^[0-9-a-zA-Z.!_~-]{5,30}\@[0-9-a-zA-Z.!_~-]{5,30}\.[a-zA-Z]{2,5}$/g.test(input.value)) {
+
+        } else {
+            console.log("El formato de el email tiene que ser el correcto tal que así asfhfasfasf@gmail.com");
+            errores[2] = " -Error en el E-mail \n";
+        }
+
+    }
+
+    function DNI(input) {
+
+
+        if (/^[0-9]{8}[a-z]$/gi.test(input.value)) {
+
+
+        } else {
+            console.log("El formato de DNI es incorrecto por favor escribalo correctamente tal que así 11111111A ");
+            errores[3] = " -Error en el DNI \n";
+        }
+    }
+
+
+    function Password(input) {
+
+
+
+        if (/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,100}$/.test(input.value)) {
+
+        } else {
+            console.log("El formato de la Contraseña es incorrecto por favor escribalo correctamente ");
+            errores[5] = " -Error en la Contraseña \n";
+        }
+    }
+
+    function ComprobarPassword(input) {
+        let p1 = document.getElementsByTagName("Password").value;
+        let p2 = document.getElementsByTagName("Repetir").value;
+
+        if (p1 == p2) {
+            console.log("Las contraseñas son iguales ");
+        } else {
+            console.log("Las contraseñas no son iguales ");
+            errores[6] = " -Error en la Comprobación de Contraseña \n";
+        }
+
+    }
+
+
+    function Direccionip(input) {
+
+        if (/^((25[0-4]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])\.){3}(25[0-4]|2[0-4][0-9]|[1-9][0-9]|[1-9])$/igm.test(input.value)) {
+
+        } else {
+            console.log("El formato de la dirección IP es incorrecto por favor escribalo correctamente tal que así XXX.XXX.XXX.XXX ");
+            errores[5] = " -Error en la Dirección IP \n";
+        }
+    }
+
+
+    function mostrarErrores() {
+        if (errores.length == 0) {
+            alert("Por favor rellene todos los campos vacios");
+        } else {
+            alert(errores);
+        }
+
+    }
+</script>
+
+</html>
