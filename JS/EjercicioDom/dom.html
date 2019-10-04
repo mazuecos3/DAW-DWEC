@@ -2,65 +2,50 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        @import url(./dom.css);
+    </style>
 
-  <link rel="stylesheet" href="dom.css" type="text/css">
+    <script src="./dom.js">
+    </script>
 
-  <title>Ejercicio Dom</title>
-
-
-
-
+    <title>Ejercicio Dom</title>
 
 </head>
 
 <body>
 
-  <div class="general">
+    <div class="general">
 
-    <div class="cuadrado1">
+        <div class="cuadrado1">
+            <div id="rojo" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
+            <button type="button" onclick="eliminarCuadrado(rojo,this)">Eliminar</button>
+        </div>
 
-      <div id="rojo"> </div>
-      <button type="button" onmouseover="aCirculo(this)">Click Me!</button>
+        <div class="cuadrado2">
+            <div id="azul" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
+            <button type="button">Eliminar</button>
+        </div>
+
+        <div class="cuadrado3">
+            <div id="verde" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
+            <button type="button">Eliminar</button>
+        </div>
+
+        <div class="cuadrado4">
+            <div id="negro" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
+            <button type="button">Eliminar</button>
+        </div>
+
+
 
     </div>
 
-    <div class="cuadrado2">
-
-      <div id="azul"> </div>
-      <button type="button">Click Me!</button>
-
     </div>
 
-    <div class="cuadrado3">
-
-      <div id="verde"> </div>
-      <button type="button">Click Me!</button>
-
-    </div>
-
-    <div class="cuadrado4">
-
-      <div id="negro"> </div>
-      <button type="button">Click Me!</button>
-
-    </div>
-
-
-
-  </div>
-
-  </div>
-  <script>
-
-function aCirculo(cambiarforma){
-
-
-}
-
-  </script>
 </body>
 
 
