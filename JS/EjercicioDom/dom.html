@@ -21,28 +21,25 @@
     <div class="general">
 
         <div class="cuadrado1">
-            <div id="rojo" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
-            <button type="button" onclick="eliminarCuadrado(rojo,this)">Eliminar</button>
+            <div id="rojo" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)" onclick="quitarSombra(this)" ondblclick="cambiarSombra(this)"> </div>
+            <button type="button" onclick="eliminarCuadrado(this)"> Eliminar </button>
         </div>
 
         <div class="cuadrado2">
-            <div id="azul" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
-            <button type="button">Eliminar</button>
+            <div id="azul" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)" onclick="quitarSombra(this)" ondblclick="cambiarSombra(this)"> </div>
+            <button type="button" onclick="eliminarCuadrado(this)">Eliminar</button>
         </div>
 
         <div class="cuadrado3">
-            <div id="verde" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
-            <button type="button">Eliminar</button>
+            <div id="verde" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)" onclick="quitarSombra(this)" ondblclick="cambiarSombra(this)"> </div>
+            <button type="button" onclick="eliminarCuadrado(this)">Eliminar</button>
         </div>
 
         <div class="cuadrado4">
-            <div id="negro" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)"> </div>
-            <button type="button">Eliminar</button>
+            <div id="negro" onmouseover="HacerCirculo(this)" onmouseout="QuitarCirculo(this)" onclick="quitarSombra(this)" ondblclick="cambiarSombra(this)"> </div>
+            <button type="button" onclick="eliminarCuadrado(this)">Eliminar</button>
         </div>
 
-
-
-    </div>
 
     </div>
 
