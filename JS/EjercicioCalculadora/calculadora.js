@@ -40,6 +40,7 @@ function ComprobarOperacion() {
 
     var escribir = this.innerText;
 
+  
     if (isNaN(escribir)) {
         Operacion(escribir);
     } else {
@@ -73,6 +74,8 @@ function mostrar(escribir) {
         pantalla.value = "0"
 
     }
+  
+   
 
     this.resultadoEval = pantalla.value;
 
@@ -86,7 +89,6 @@ function Operacion(escribir) {
     switch (escribir) {
         case "C":
             borrar();
-
             break;
 
         case "%":
@@ -128,6 +130,8 @@ function Operacion(escribir) {
 
             calcular();
             break;
+
+       
 
     }
 
@@ -191,7 +195,9 @@ document.addEventListener('keydown', function(event) {
 
     let teclaPulsada = event.key;
 
-
+if (teclaPulsada <= 9 || teclaPulsada >= 0) {
+    mostrar(teclaPulsada);
+} else {
     switch (teclaPulsada) {
         case "c":
             borrar();
@@ -217,7 +223,12 @@ document.addEventListener('keydown', function(event) {
         case "p":
             parentesis();
             break;
+
+                
     }
+}
+
+    
 
 });
 
