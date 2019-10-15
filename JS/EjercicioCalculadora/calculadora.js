@@ -1,14 +1,7 @@
 var pantalla;
-
-
-
 var Comprobaroperacion;
 
-
-
-
-
-
+//Funcion onload, le decimos que cargue todo al iniciar el documento
 window.onload = function() {
 
     pantalla = document.getElementById("pantalla");
@@ -17,9 +10,11 @@ window.onload = function() {
     var resultadoEval;
 
     for (let i = 0; i < botones.length; i++) {
-
+        //Al clickar el raton 
         botones[i].addEventListener("click", ComprobarOperacion);
+        //Al mantener el raotn 
         botones[i].addEventListener("mousedown", sombraInterior);
+        //Al parar de mantener (soltar) el raton
         botones[i].addEventListener("mouseup", quitarSombra);
 
 
@@ -29,23 +24,21 @@ window.onload = function() {
 
 }
 
-
+// Añadimos la clase para que se pongo la sombra intrior 
 function sombraInterior() {
     this.classList.add("sombraInterior");
 }
-
+// Quitamos la clase para que se pongo la sombra intrior 
 function quitarSombra() {
 
     this.classList.remove("sombraInterior");
 
 }
 
-
+// Comprobamos si es numero u  operacion
 function ComprobarOperacion() {
 
     var escribir = this.innerText;
-
-
 
     if (isNaN(escribir)) {
         Operacion(escribir);
@@ -56,7 +49,7 @@ function ComprobarOperacion() {
 
 
 }
-
+// funcionescribir en la pantalla
 function mostrar(escribir) {
 
     // Averiguar coma
@@ -85,6 +78,7 @@ function mostrar(escribir) {
 
 }
 
+// Funcion asignar operación 
 function Operacion(escribir) {
 
     let operacion = "";
@@ -145,19 +139,20 @@ function Operacion(escribir) {
 
 }
 
-
+//funcion borrar pantalla, la iguala a 0
 function borrar() {
 
     pantalla.value = "0";
 }
 
-
+//funcion porcentaje
 
 function porcentaje() {
 
 
 }
 
+//funcion que borra de derecha a izquierda y de uno en uno
 function borrarFlecha() {
 
     pantalla.value = pantalla.value.substring(0, pantalla.value.length - 1);
@@ -169,7 +164,7 @@ function borrarFlecha() {
     }
 }
 
-
+// funcion calcular donde muestra el resultado
 function calcular() {
 
     let resultado = eval(this.resultadoEval);
@@ -177,6 +172,8 @@ function calcular() {
     pantalla.value = resultado;
 
 }
+
+// funcion para añadir parentesis 
 
 function parentesis() {
 
@@ -186,3 +183,42 @@ function parentesis() {
 
 
 }
+
+
+
+// funcion para el teclado 
+document.addEventListener('keydown', function(event) {
+
+    let teclaPulsada = event.key;
+
+
+    switch (teclaPulsada) {
+        case "c":
+            borrar();
+            break;
+        case "Backspace":
+            borrarFlecha();
+            break;
+        case "/":
+            Operacion("/");
+            break;
+        case "*":
+            Operacion("x");
+            break;
+        case "-":
+            Operacion("-");
+            break;
+        case "+":
+            Operacion("+");
+            break;
+        case "Enter":
+            Operacion("=");
+            break;
+        case "p":
+            parentesis();
+            break;
+    }
+
+});
+
+//Falta añadir teclas númericas también.
