@@ -1,0 +1,48 @@
+body{
+    width: 99%;   
+    background-color: lightgreen;
+    
+}
+
+
+.central {
+  margin-top:100px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "mapa";
+    justify-items:center;
+}
+#mapa {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+    grid-area: mapa;  
+}
+
+
+.cuadrado {
+    width: 200px;
+    height: 200px;
+    background-color: lightsteelblue;
+    border:solid 1px black;
+}
+
+.j1{
+    
+  
+   background-image: url("X.png");
+   background-size: 200px 200px;
+   background-color: lightsteelblue;
+   border:solid 0.5px black;
+  
+   
+   
+}
+.j2{
+   
+    background-image: url("O.png");
+    background-size: 200px 200px;
+    background-color: lightsteelblue;
+    border:solid 0.5px black;
+   
+}
