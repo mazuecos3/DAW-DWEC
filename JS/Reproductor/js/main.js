@@ -24,8 +24,6 @@ function mutear() {
     } else {
         video.volume = 1.0;
     }
-
-
 }
 // al hacer click retrodecmeos 10 segundos en el  vídeo
 function retrocederDiez() {
@@ -34,8 +32,6 @@ function retrocederDiez() {
 //al hacer click una vez si el vidoe esta parado, comenzara a funcionar 
 //y si esta funcionando y le damos se va a parar.
 function playStop() {
-
-
     if (video.paused) {
         video.play();
 
@@ -62,12 +58,12 @@ function subirVolumen() {
 
 }
 
-//al hacer click que baje el volumen en 0.2 entre 0.0 --> "minimo" y 1.0 --->"maximo"
+//al hacer click que baje el volumen en 0.2 entre 0.01(porque si pongo 0.0 peta) --> "minimo" y 1.0 --->"maximo"
 function bajarVolumen() {
     console.log(video.volume);
 
-    if (video.volume != 0 && video.volume > 0) {
-        video.volume -= 0.2;
+    if (video.volume > 0.01 ) {
+        video.volume -= 0.1;
 
     }
 }
