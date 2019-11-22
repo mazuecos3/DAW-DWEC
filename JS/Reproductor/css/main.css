@@ -8,20 +8,21 @@ body {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-areas: "head secundaria" "nav  secundaria";
+    grid-template-rows: 1fr 50px 200px;
+    grid-template-areas: "head secundaria" "barra  secundaria" "nav  secundaria";
 }
 
 .principal {
-    position:relative;
+    position: relative;
     grid-area: head;
     height: 360px;
     width: 640px;
     border: solid black 5px;
 }
+
 .principal video {
-    position:absolute;
-    z-index:0;
+    position: absolute;
+    z-index: 0;
 }
 
 #videos {
@@ -34,38 +35,34 @@ body {
     grid-template-columns: 1fr;
     justify-items: center;
 }
-#publi{
 
-width: 300px;
-height: 200px;
-background: yellow;
-position: absolute;
-margin-top: 100px;
-margin-left: 170px;
-z-index:1;
-
+#publi {
+    width: 300px;
+    height: 200px;
+    background: yellow;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 170px;
+    z-index: 1;
 }
-#publi p{
+
+#publi p {
     text-align: center;
     font-size: 3em;
 }
 
-#publi button{
+#publi button {
     font-size: 1.5em;
     float: right;
     background: none;
     border: none;
     visibility: hidden;
-  
 }
 
 #videos * {
-  
     width: 180px;
     height: 150px;
 }
-
-
 
 #controles {
     border: solid black 5px;
@@ -75,17 +72,34 @@ z-index:1;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 1fr;
     grid-area: nav;
+}
+
+#barra {
     justify-items: center;
+    text-align: center;
+    align-items: center;
+    border: solid black 5px;
+    height: 50px;
+    width: 640px;
+}
+
+#barra progress {
+    justify-items: center;
+    margin-top: 10px;
+    height: 30px;
+    width: 600px;
 }
 
 #number {
-    font-size:50px;
-    color:black;
+    font-size: 50px;
+    color: black;
     position: absolute;
     z-index: 1;
     margin-left: 420px;
     margin-top: 250px;
-  }
+}
+
+
 /*Hijos*/
 
 #controles * {
