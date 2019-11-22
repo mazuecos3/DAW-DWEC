@@ -1,10 +1,18 @@
 window.onload = init;
 var video;
+var totalTime = 10;
 
 function init() {
-
+    contador();
     video = document.querySelector("video");
-    console.log("Inicio");
+    let videos = document.getElementById("videos").children;
+    videos[0].addEventListener("click", videoPrincipal);
+    videos[1].addEventListener("click", videoPrincipal);
+    videos[2].addEventListener("click", videoPrincipal);
+    videos[3].addEventListener("click", videoPrincipal);
+
+    //console.log(videos);
+
     let controles = document.getElementById("controles").children;
 
     controles[0].addEventListener("click", mutear);
@@ -15,6 +23,21 @@ function init() {
     controles[5].addEventListener("click", subirVolumen);
     controles[6].addEventListener("click", bajarVolumen);
 
+    let botonQuitarAnuncio = document.getElementById("quitarAnuncio");
+    botonQuitarAnuncio.addEventListener("click", quitarAnuncio);
+
+}
+
+function videoPrincipal() {
+  
+    insertarAnuncio();
+    contador();
+    console.log("funciona");
+    var videoPrincipal = this.src;
+    this.src = video.src;
+    video.src = videoPrincipal;
+    video.currentTime = 0;
+    video.play();
 }
 // al hacer click muteamos y desmuteamos el video, lo establecemos a 
 //el mínimo de nivel de audio y maximo en caso de que este muteado
@@ -62,8 +85,40 @@ function subirVolumen() {
 function bajarVolumen() {
     console.log(video.volume);
 
-    if (video.volume > 0.01 ) {
+    if (video.volume > 0.01) {
         video.volume -= 0.1;
 
     }
 }
+
+
+function insertarAnuncio() {
+   
+    let publicidad = document.getElementById("publi");
+    publicidad.style.visibility = "visible";
+}
+function quitarAnuncio() {
+
+    let publicidad = document.getElementById("publi");
+
+    publicidad.style.visibility = "hidden";
+}
+
+function insertarContador() {
+    let cuentaAtras = document.getElementById("number");  
+    cuentaAtras.style.visibility = "visible";
+}
+
+
+function contador() {
+    let cuentaAtras = document.getElementById("quitarAnuncio");  
+    document.getElementById('number').innerHTML = totalTime;
+    if (totalTime == 0) {
+        cuentaAtras.style.visibility = "visible";
+    } else {
+        totalTime -= 1;
+        setTimeout("contador()", 1000);
+    }
+}
+
+

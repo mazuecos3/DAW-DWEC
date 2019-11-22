@@ -12,32 +12,60 @@ body {
     grid-template-areas: "head secundaria" "nav  secundaria";
 }
 
-#principal {
+.principal {
+    position:relative;
     grid-area: head;
     height: 360px;
     width: 640px;
     border: solid black 5px;
+}
+.principal video {
+    position:absolute;
+    z-index:0;
 }
 
 #videos {
     border: solid black 5px;
     grid-area: secundaria;
     display: grid;
-    width: 180px;
-    grid-gap: 20px;
-    grid-template-rows: repeat(5, 1fr);
+    width: 190px;
+    height: 600px;
+    grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr;
     justify-items: center;
 }
+#publi{
 
-#videos * {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 180px;
-    height: 130px;
+width: 300px;
+height: 200px;
+background: yellow;
+position: absolute;
+margin-top: 100px;
+margin-left: 170px;
+z-index:1;
+
+}
+#publi p{
+    text-align: center;
+    font-size: 3em;
 }
 
-#video1 {}
+#publi button{
+    font-size: 1.5em;
+    float: right;
+    background: none;
+    border: none;
+    visibility: hidden;
+  
+}
+
+#videos * {
+  
+    width: 180px;
+    height: 150px;
+}
+
+
 
 #controles {
     border: solid black 5px;
@@ -50,7 +78,14 @@ body {
     justify-items: center;
 }
 
-
+#number {
+    font-size:50px;
+    color:black;
+    position: absolute;
+    z-index: 1;
+    margin-left: 420px;
+    margin-top: 250px;
+  }
 /*Hijos*/
 
 #controles * {
@@ -58,30 +93,30 @@ body {
     width: 50px;
 }
 
-#silenciar {
+.silenciar {
     content: url("../media/volume_off-24px.svg");
 }
 
-#menos10 {
+.menos10 {
     content: url("../media/arrow_back_ios-24px.svg");
 }
 
-#playPause {
+.playPause {
     content: url("../media/play_arrow-24px.svg");
 }
 
-#mas10 {
+.mas10 {
     content: url("../media/arrow_forward_ios-24px.svg");
 }
 
-#reiniciar {
+.reiniciar {
     content: url("../media/subdirectory_arrow_left-24px.svg");
 }
 
-#bajarVolumen {
+.bajarVolumen {
     content: url("../media/add-24px.svg");
 }
 
-#subirVolumen {
+.subirVolumen {
     content: url("../media/remove-24px.svg");
 }
