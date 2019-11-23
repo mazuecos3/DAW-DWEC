@@ -3,6 +3,12 @@ var video;
 var totalTime = 10;
 var limpiarContador;
 
+let barra;
+
+let tiempoActual;
+let duracionTotal;
+
+let porcentaje;
 
 function init() {
     contador();
@@ -11,6 +17,8 @@ function init() {
     anuncio();
 
 }
+
+
 //Elegimos el video que queremos pponer de el menu de la derecha
 //Y ponemos anuncio con el contaodr y ocultmaos los controles hasta que el anuncio se quite
 function videoPrincipal() {
@@ -43,6 +51,7 @@ function playStop() {
     if (video.paused) {
         video.play();
 
+
     } else {
         video.pause();
     }
@@ -59,7 +68,7 @@ function reiniciar() {
 }
 //al hacer click que suba  el volumen en 0.2 entre 0.0 --> "minimo" y 1.0 --->"maximo"
 function subirVolumen() {
-    console.log(video.volume);
+    //console.log(video.volume);
     if (video.volume < 1) {
         video.volume += 0.2;
     }
@@ -68,7 +77,7 @@ function subirVolumen() {
 
 //al hacer click que baje el volumen en 0.2 entre 0.01(porque si pongo 0.0 peta) --> "minimo" y 1.0 --->"maximo"
 function bajarVolumen() {
-    console.log(video.volume);
+    //console.log(video.volume);
 
     if (video.volume > 0.01) {
         video.volume -= 0.1;
@@ -76,11 +85,14 @@ function bajarVolumen() {
     }
 }
 
-//hacemos el anuncio visible
+//hacemos el anuncio visible y quitamos la barra de progreso del video
 function insertarAnuncio() {
 
     let publicidad = document.getElementById("publi");
     publicidad.style.visibility = "visible";
+
+    let barraVideo = document.querySelector('.progress');
+    barraVideo.style.visibility = "hidden";
 }
 //ocultamos el anuncio
 function quitarAnuncio() {
@@ -93,7 +105,12 @@ function quitarAnuncio() {
     //al quitar el anuncio, que el video se ejecute
     if (publicidad.style.visibility = "hidden") {
         video.play();
+        //al ejecutar el video añadimos la barra de carga del video con un setInterval
+        setInterval(moverBarra, 100);
     }
+    //cuando se quite el anuncio aparece la barra de progreso  del video
+    let barraVideo = document.querySelector('.progress');
+    barraVideo.style.visibility = "visible";
     //cuando se quite el anuncio aparece menu controles
     let divControles = document.getElementById("controles");
     divControles.style.visibility = "visible";
@@ -151,5 +168,16 @@ function iniciarVideos() {
 function anuncio() {
     let botonQuitarAnuncio = document.getElementById("quitarAnuncio");
     botonQuitarAnuncio.addEventListener("click", quitarAnuncio);
+
+}
+//funcion cogemos la clase barra y hacemos una regla de tres con el porcentaje 
+//de el tiempo actual dividido entre la duracion total del vidoe
+
+function moverBarra() {
+    barra = document.querySelector('.barra');
+    tiempoActual = video.currentTime;
+    duracionTotal = video.duration;
+    porcentaje = (tiempoActual * 100) / duracionTotal;
+    barra.style.width = porcentaje + '%';
 
 }
