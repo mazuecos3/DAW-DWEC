@@ -123,13 +123,16 @@ body {
 
 .progress {
     width: 650px;
-    height: 25px;
+    height: 15px;
     background-color: lightgrey;
     visibility: hidden;
+    -webkit-appearance: none;
 }
 
 .progress .barra {
-    height: 25px;
+    height: 15px;
     width: 0%;
     background-color: red;
+    border-radius: 50px;
+   
 }

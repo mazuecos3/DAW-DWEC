@@ -123,7 +123,6 @@ function insertarContador() {
     contador();
 
 }
-
 //Aqui hacmeos la cuenta atrás de 10 a 0, cuando llegue a 0 ocultamos el contador 
 //y habilitamos el boton de cerrar ventana "X"
 function contador() {
