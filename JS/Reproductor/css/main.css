@@ -96,6 +96,9 @@ body {
 .silenciar {
     content: url("../media/volume_off-24px.svg");
 }
+.desSilenciar{
+    content: url("../media/volume_up-24px.svg");
+}
 
 .menos10 {
     content: url("../media/arrow_back_ios-24px.svg");
@@ -104,6 +107,11 @@ body {
 .playPause {
     content: url("../media/play_arrow-24px.svg");
 }
+.playPause1 {
+    content: url("../media/pause-24px.svg");
+    
+}
+
 
 .mas10 {
     content: url("../media/arrow_forward_ios-24px.svg");

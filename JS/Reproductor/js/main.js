@@ -17,43 +17,47 @@ function init() {
     anuncio();
 
 }
-
-
 //Elegimos el video que queremos pponer de el menu de la derecha
 //Y ponemos anuncio con el contaodr y ocultmaos los controles hasta que el anuncio se quite
 function videoPrincipal() {
-
+  ocultarX();
     insertarAnuncio();
     insertarContador();
     controles();
-
     var videoPrincipal = this.src;
     this.src = video.src;
     video.src = videoPrincipal;
 
 }
+
 // al hacer click muteamos y desmuteamos el video, lo establecemos a 
 //el mínimo de nivel de audio y maximo en caso de que este muteado
+
 function mutear() {
+    let controles = document.getElementById("controles").children;
     if (video.volume != 0.0) {
         video.volume = 0.0;
+        controles[0].classList.replace("desSilenciar","silenciar");
     } else {
         video.volume = 1.0;
+        controles[0].classList.replace("silenciar","desSilenciar");
     }
 }
 // al hacer click retrodecmeos 10 segundos en el  vídeo
 function retrocederDiez() {
+
     video.currentTime -= 10;
 }
 //al hacer click una vez si el vidoe esta parado, comenzara a funcionar 
 //y si esta funcionando y le damos se va a parar.
 function playStop() {
+    let controles = document.getElementById("controles").children;
     if (video.paused) {
         video.play();
-
-
+        controles[2].classList.replace("playPause","playPause1");
     } else {
         video.pause();
+        controles[2].classList.replace("playPause1","playPause");
     }
 }
 // al hacer click avanzamos 10 segundos en el vídeo
@@ -179,4 +183,9 @@ function moverBarra() {
     porcentaje = (tiempoActual * 100) / duracionTotal;
     barra.style.width = porcentaje + '%';
 
+}
+
+function ocultarX() {
+    let quitarAnuncioX = document.getElementById("quitarAnuncio");
+    quitarAnuncioX.style.visibility = "hidden";
 }
