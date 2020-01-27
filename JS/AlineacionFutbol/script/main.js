@@ -1,9 +1,11 @@
 function cargar() {
     document.getElementById("div1").addEventListener("dragover", allowDrop);
     document.getElementById("div2").addEventListener("dragover", allowDrop);
+    document.getElementById("div3").addEventListener("dragover", allowDrop);
     //document.getElementById("drag").addEventListener("dragstart", drag);
-    document.getElementById("div2").addEventListener("drop", drop);
     document.getElementById("div1").addEventListener("drop", drop);
+    document.getElementById("div2").addEventListener("drop", drop);
+    document.getElementById("div3").addEventListener("drop", drop);
     createJugadores();
     createJugadoresSuplentes();
 }
@@ -43,35 +45,41 @@ function drop(ev) {
 
 }
 
+//CREAMOS JUGADORES (2 equipos)
 function createJugadores() {
-    let jugadores = document.getElementById("div1");
-    console.log(jugadores);
-    for (let i = 0; i < 9; i++) {
-        let divJugador = document.createElement("div");
-        divJugador.classList.add("dragClass");
-        divJugador.id = "drag" + i;
-        divJugador.setAttribute('draggable', true);
-        console.log(divJugador + [i]);
-        divJugador.addEventListener("dragover", allowDrop);
-        divJugador.addEventListener("dragstart", drag);
-        divJugador.addEventListener("drop", drop);
-        jugadores.appendChild(divJugador);
-    }
 
+    let arrayEquipos = document.getElementById("container").children;
+    console.log(arrayEquipos.length);
+    //console.log(jugadores);
+    for (let j = 0; j < arrayEquipos.length; j++) {
+
+        let jugadores = arrayEquipos[j];
+        for (let i = 0; i < 9; i++) {
+
+            let divJugador = document.createElement("div");
+            divJugador.classList.add("dragClass");
+            divJugador.id = "drag" + i;
+            divJugador.setAttribute('draggable', true);
+            //console.log(divJugador + [i]);
+            divJugador.addEventListener("dragstart", drag);
+
+            jugadores.appendChild(divJugador);
+
+        }
+    }
 }
 
+//CREAMOS SUPLENTES
 function createJugadoresSuplentes() {
     let jugadores = document.getElementById("div2");
-    console.log(jugadores);
+    // console.log(jugadores);
     for (let i = 0; i < 9; i++) {
         let divJugador = document.createElement("div");
         divJugador.classList.add("dragClass1");
         divJugador.id = "drag" + i;
         divJugador.setAttribute('draggable', true);
-
-        divJugador.addEventListener("dragover", allowDrop);
         divJugador.addEventListener("dragstart", drag);
-        divJugador.addEventListener("drop", drop);
+
         jugadores.appendChild(divJugador);
     }
 
