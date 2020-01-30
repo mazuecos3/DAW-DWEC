@@ -1,11 +1,7 @@
+var cuentamierda = 0;
+
 function cargar() {
-    document.getElementById("div1").addEventListener("dragover", allowDrop);
-    document.getElementById("div2").addEventListener("dragover", allowDrop);
-    document.getElementById("div3").addEventListener("dragover", allowDrop);
-    //document.getElementById("drag").addEventListener("dragstart", drag);
-    document.getElementById("div1").addEventListener("drop", drop);
-    document.getElementById("div2").addEventListener("drop", drop);
-    document.getElementById("div3").addEventListener("drop", drop);
+
     createJugadores();
     createJugadoresSuplentes();
 }
@@ -14,6 +10,7 @@ function allowDrop(ev) {
 
     //Permitir que reciba algún elemento
     ev.preventDefault();
+    //console.log(ev);
 
 }
 
@@ -28,15 +25,13 @@ function drag(ev) {
     contenedor = document.getElementById(ev.target.id).parentNode;
     console.log(contenedor);
 
-
-
 }
 
 function drop(ev) {
 
     //Evitamos el comportamiento normal del navegador, que sería abrir el elemento en una nueva pestaña.
     ev.preventDefault();
-
+    console.log(ev);
     //Guardamos el elemento, llamado "text" en una variable.
     var data = ev.dataTransfer.getData("text");
 
@@ -62,33 +57,37 @@ function createJugadores() {
     for (let j = 0; j < arrayEquipos.length; j++) {
 
         let jugadores = arrayEquipos[j];
-        for (let i = 0; i < 6; i++) {
+        for (let i = 1; i < 7; i++) {
 
             let divJugador = document.createElement("div");
             divJugador.classList.add("dragClass");
-            divJugador.id = "drag" + i;
-            divJugador.setAttribute('draggable', true);
-            //console.log(divJugador + [i]);
-            // divJugador.addEventListener("dragstart", drag);
-
+            divJugador.id = "drag" + cuentamierda + i;
+            //divJugador.setAttribute('draggable', true);
+            console.log(divJugador + [i]);
+            //divJugador.addEventListener("dragstart", drag);
+            divJugador.addEventListener("dragover", allowDrop);
+            divJugador.addEventListener("drop", drop);
             jugadores.appendChild(divJugador);
-
+            console.log(i);
         }
     }
+
+    cuentamierda++;
 }
 
 //CREAMOS SUPLENTES
 function createJugadoresSuplentes() {
     let jugadores = document.getElementById("div3");
     // console.log(jugadores);
-    for (let i = 0; i < 12; i++) {
+    for (let i = 1; i < 13; i++) {
         let divJugador = document.createElement("div");
         divJugador.classList.add("dragClass1");
         divJugador.innerText = "Jugador" + i;
         divJugador.id = "drag" + i;
         divJugador.setAttribute('draggable', true);
         divJugador.addEventListener("dragstart", drag);
-
+        divJugador.addEventListener("dragover", allowDrop);
+        divJugador.addEventListener("drop", drop);
         jugadores.appendChild(divJugador);
     }
 
