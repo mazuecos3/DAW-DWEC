@@ -26,6 +26,7 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 
     contenedor = document.getElementById(ev.target.id).parentNode;
+    console.log(contenedor);
 
 
 
@@ -42,6 +43,13 @@ function drop(ev) {
     //Colgamos el elemeto arrastrado y soltado en el nuevo destino.
     // ev.target.firstChild;
     ev.target.appendChild(document.getElementById(data));
+    //console.log(ev.target);
+
+    if (ev.target.classList == "dragClass") {
+        ev.target.classList.remove("dragClass");
+        ev.target.classList.add("dragClassJugador");
+        console.log(ev.target);
+    }
 
 }
 
@@ -49,19 +57,19 @@ function drop(ev) {
 function createJugadores() {
 
     let arrayEquipos = document.getElementById("container").children;
-    console.log(arrayEquipos.length);
+    // console.log(arrayEquipos.length);
     //console.log(jugadores);
     for (let j = 0; j < arrayEquipos.length; j++) {
 
         let jugadores = arrayEquipos[j];
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 6; i++) {
 
             let divJugador = document.createElement("div");
             divJugador.classList.add("dragClass");
             divJugador.id = "drag" + i;
             divJugador.setAttribute('draggable', true);
             //console.log(divJugador + [i]);
-            divJugador.addEventListener("dragstart", drag);
+            // divJugador.addEventListener("dragstart", drag);
 
             jugadores.appendChild(divJugador);
 
@@ -71,11 +79,12 @@ function createJugadores() {
 
 //CREAMOS SUPLENTES
 function createJugadoresSuplentes() {
-    let jugadores = document.getElementById("div2");
+    let jugadores = document.getElementById("div3");
     // console.log(jugadores);
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 12; i++) {
         let divJugador = document.createElement("div");
         divJugador.classList.add("dragClass1");
+        divJugador.innerText = "Jugador" + i;
         divJugador.id = "drag" + i;
         divJugador.setAttribute('draggable', true);
         divJugador.addEventListener("dragstart", drag);
