@@ -5,6 +5,24 @@ function cogerDatos() {
 function crear() {
     console.log("Creando");
     let contenedor = document.getElementById("contenedorFichas");
+    let contenedorForm = document.querySelectorAll("input");
+    let error = document.querySelectorAll(".error");
+    let contador = 0;
+
+
+    //console.log(contenedorForm);
+    contenedorForm.forEach(caja => {
+        if (caja.value == "") {
+            console.log(caja);
+            caja.parentNode.classList.add("bordeError");
+            error[contador].style.visibility = "visible";
+        } else {
+            caja.parentNode.classList.remove("bordeError");
+            error[contador].style.visibility = "hidden";
+        }
+
+        contador++;
+    });
     contenedor.innerHTML = "";
 
     let divPrueba = document.createElement("div");
@@ -19,7 +37,7 @@ function crear() {
 
 
     imagen.src = rutaImagen;
-    console.log(imagen.src);
+
 
     divPrueba.innerHTML = `<div class="datos">
         <div class="small cabecera">Nombre</div>

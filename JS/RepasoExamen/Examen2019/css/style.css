@@ -121,8 +121,11 @@ img {
     margin-bottom: 15px;
 }
 
-.error {
+.bordeError {
     border: 1px solid red;
+}
+
+.error {
     float: left;
     padding-left: 10px;
     padding-right: 10px;
