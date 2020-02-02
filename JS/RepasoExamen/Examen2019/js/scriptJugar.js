@@ -1,5 +1,7 @@
 let gotUrl = "./got.json";
 let personajes = [];
+let aciertos = 0;
+let fallos = 0;
 
 
 
@@ -15,16 +17,13 @@ function cargar() {
     };
     peticion.open("GET", gotUrl, true);
     peticion.send();
-
-
-
 }
 
 function mostarPersonajes(personajes) {
     console.log(personajes);
     let contenedor = document.getElementById("contenedorFotos");
+
     personajes.got.forEach(personaje => {
-        console.log(personaje);
 
         let divPrueba = document.createElement("div");
         let imagen = document.createElement("img");
@@ -47,12 +46,37 @@ function mostarPersonajes(personajes) {
         contenedor.appendChild(divPrueba);
     });
 
+
+}
+
+function comprobar() {
+    let btnComprobar = document.getElementById("comprobar");
+    let select = document.querySelectorAll("select");
+    let personas = [
+        "Casa Lannister",
+        "Casa Targaryen",
+        "Casa Stark",
+        "Casa Bolton",
+        "Casa Stark",
+        "Casa Tyrell",
+        "Casa Baratheon",
+        "Casa Clegane"
+    ];
+
+    for (let i = 0; i < select.length; i++) {
+
+        if (select[i].value == personas[i]) {
+            aciertos++;
+        }
+    }
+    console.log("Acertados: " + aciertos + "/8");
+    aciertos = 0;
 }
 
 function init() {
     console.log("Iniciando...");
+    document.getElementById("comprobar").addEventListener("click", comprobar);
     cargar();
-
 
 
 }
