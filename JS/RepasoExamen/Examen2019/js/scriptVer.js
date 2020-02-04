@@ -1,15 +1,17 @@
 let gotUrl = "./got.json";
-let personajes = [];
+let personajes;
 
 
 
 function cargar() {
+
     var peticion = new XMLHttpRequest();
     peticion.onreadystatechange = function() {
         if (this.readyState == 4) {
             // console.log(JSON.parse(this.responseText).ip);
             personajes = JSON.parse(this.responseText);
-            //console.log(personajes);
+            // console.log(personajes);
+            // console.log(this.responseText);
             mostarPersonajes(personajes);
         }
     };
@@ -21,10 +23,9 @@ function cargar() {
 }
 
 function mostarPersonajes(personajes) {
-    console.log(personajes);
+
     let contenedor = document.getElementById("contenedorFichas");
     personajes.got.forEach(personaje => {
-        console.log(personaje);
 
         let divPrueba = document.createElement("div");
         let imagen = document.createElement("img");

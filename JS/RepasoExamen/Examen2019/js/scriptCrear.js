@@ -2,16 +2,21 @@ function cogerDatos() {
 
 }
 
-function crear() {
-    console.log("Creando");
-    let contenedor = document.getElementById("contenedorFichas");
+function addEventListeners() {
+    let contenedorForm = document.querySelectorAll("input");
+    contenedorForm.forEach(caja => {
+        caja.addEventListener("blur", controlarErrores);
+
+    });
+}
+
+function controlarErrores() {
     let contenedorForm = document.querySelectorAll("input");
     let error = document.querySelectorAll(".error");
     let contador = 0;
-
-
     //console.log(contenedorForm);
     contenedorForm.forEach(caja => {
+
         if (caja.value == "") {
             console.log(caja);
             caja.parentNode.classList.add("bordeError");
@@ -23,6 +28,13 @@ function crear() {
 
         contador++;
     });
+}
+
+function crear() {
+    console.log("Creando");
+    let contenedor = document.getElementById("contenedorFichas");
+
+
     contenedor.innerHTML = "";
 
     let divPrueba = document.createElement("div");
@@ -60,7 +72,9 @@ function crear() {
 function init() {
     console.log("Iniciando...");
     document.querySelector(".btn").addEventListener("click", crear);
+    addEventListeners();
     cogerDatos();
+
 }
 
 window.onload = init;
