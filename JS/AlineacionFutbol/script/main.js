@@ -23,7 +23,7 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 
     contenedor = document.getElementById(ev.target.id).parentNode;
-    console.log(contenedor);
+    //console.log(contenedor);
 
 }
 
@@ -31,19 +31,20 @@ function drop(ev) {
 
     //Evitamos el comportamiento normal del navegador, que sería abrir el elemento en una nueva pestaña.
     ev.preventDefault();
-    console.log(ev);
+    // console.log(ev);
     //Guardamos el elemento, llamado "text" en una variable.
     var data = ev.dataTransfer.getData("text");
 
     //Colgamos el elemeto arrastrado y soltado en el nuevo destino.
     // ev.target.firstChild;
-    ev.target.appendChild(document.getElementById(data));
+
     //console.log(ev.target);
 
-    if (ev.target.classList == "dragClass") {
-        ev.target.classList.remove("dragClass");
-        ev.target.classList.add("dragClassJugador");
-        console.log(ev.target);
+    if (ev.target.classList.contains("dragClass")) {
+
+        ev.target.appendChild(document.getElementById(data));
+        console.log(ev.target.classList);
+        console.log(data);
     }
 
 }
@@ -63,12 +64,12 @@ function createJugadores() {
             divJugador.classList.add("dragClass");
             divJugador.id = "drag" + cuentamierda + i;
             //divJugador.setAttribute('draggable', true);
-            console.log(divJugador + [i]);
+            //  console.log(divJugador + [i]);
             //divJugador.addEventListener("dragstart", drag);
             divJugador.addEventListener("dragover", allowDrop);
             divJugador.addEventListener("drop", drop);
             jugadores.appendChild(divJugador);
-            console.log(i);
+            //  console.log(i);
         }
     }
 
@@ -90,6 +91,25 @@ function createJugadoresSuplentes() {
         divJugador.addEventListener("drop", drop);
         jugadores.appendChild(divJugador);
     }
+
+}
+
+
+
+function cargarAjax() {
+    var peticion = new XMLHttpRequest();
+    peticion.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            // console.log(JSON.parse(this.responseText).ip);
+            personajes = JSON.parse(this.responseText);
+            //console.log(personajes);
+            mostarPersonajes(personajes);
+        }
+    };
+    peticion.open("GET", gotUrl, true);
+    peticion.send();
+
+
 
 }
 window.addEventListener("load", cargar);
